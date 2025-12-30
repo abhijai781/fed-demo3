@@ -1,0 +1,11 @@
+type Product @key(fields: "productId") {
+  productId: String
+  productDescription: String
+  userId: ID
+}
+
+type User @key(fields: "userId") @extends {
+    userId: ID! @external
+    products: [Product] @requires(fields: "userId")
+
+}

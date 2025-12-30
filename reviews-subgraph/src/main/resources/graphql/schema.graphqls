@@ -1,0 +1,11 @@
+type Review @key(fields: "reviewId") {
+    reviewId: String!
+    productId: String
+    text: String!
+    starRating: Int!
+}
+
+type Product @key(fields: "productId") @extends {
+    productId: String! @external
+    reviews: [Review] @requires(fields: "productId")
+}
