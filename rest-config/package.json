@@ -1,0 +1,17 @@
+{
+  "name": "wundergraph-springboot-integration",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wundergraph dev",
+    "generate": "wundergraph generate"
+  },
+  "dependencies": {
+    "@wundergraph/nextjs": "^0.15.9",
+    "@wundergraph/sdk": "^0.175.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
