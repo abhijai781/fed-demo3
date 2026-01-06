@@ -1,6 +1,6 @@
 package com.example.users.controller;
 
-import com.example.users.model.User;
+import com.example.users.model.*;
 import com.example.users.data.UserService;
 import org.springframework.graphql.data.federation.EntityMapping;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -19,16 +19,35 @@ public class UserController {
     }
 
     @QueryMapping
-    public List<User> users() {
-        return repository.findAll();
+    public UsersResult users() {
+        try {
+            List<User> users = repository.findAll();
+            return new UsersPayload(users);
+        } catch (Exception e) {
+            return new UserError("Failed to retrieve users: " + e.getMessage());
+        }
     }
 
-
-
     @EntityMapping
-    @QueryMapping
     public User user(@Argument Long userId) {
-        return repository.findById(userId);
+        User user = repository.findById(userId);
+        if (user == null) {
+            throw new RuntimeException("User not found with id: " + userId);
+        }
+        return user;
+    }
+
+    @QueryMapping
+    public UserResult userQuery(@Argument Long userId) {
+        try {
+            User user = repository.findById(userId);
+            if (user == null) {
+                return new UserNotFoundError("User not found", userId);
+            }
+            return user;
+        } catch (Exception e) {
+            return new UserError("Failed to retrieve user: " + e.getMessage());
+        }
     }
 
 }

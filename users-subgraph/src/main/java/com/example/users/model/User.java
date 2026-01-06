@@ -3,7 +3,7 @@ package com.example.users.model;
 
 import java.util.List;
 
-public class User {
+public class User implements UserResult {
 
     private Long userId;
     private String name;

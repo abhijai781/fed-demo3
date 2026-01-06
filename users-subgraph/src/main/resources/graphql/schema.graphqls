@@ -1,6 +1,6 @@
 type Query {
-    users: [User]
-    user(userId: ID!): User
+    users: UsersResult
+    userQuery(userId: ID!): UserResult
 }
 
 type User @key(fields: "userId") {
@@ -9,4 +9,23 @@ type User @key(fields: "userId") {
   email: String
 }
 
+# Union types for error handling
+union UserResult = User | UserNotFoundError | UserError
+union UsersResult = UsersPayload | UserError
+
+# Success payload for list of users
+type UsersPayload {
+    users: [User]!
+}
+
+# Error types
+type UserNotFoundError {
+    message: String!
+    userId: ID!
+}
+
+type UserError {
+    message: String!
+    errorCode: String
+}
 
