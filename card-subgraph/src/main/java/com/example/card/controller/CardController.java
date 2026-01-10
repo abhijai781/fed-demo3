@@ -21,7 +21,7 @@ public class CardController {
     }
 
     @GetMapping("/{userId}")
-    public List<Card> getProduct(@PathVariable Long userId) {
+    public List<Card> getCards(@PathVariable Long userId) {
         return cardService.getCards(userId);
     }
 

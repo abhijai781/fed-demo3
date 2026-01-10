@@ -1,0 +1,9 @@
+type Query {
+    getCards(userId: ID!): [Card]
+}
+
+type Card {
+  userId: ID!
+  cardId: String
+  cardExpiry: String
+}
