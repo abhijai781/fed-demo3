@@ -12,7 +12,8 @@
     "start:router": "./router/router -config ./router.config.yaml",
     "start:service": "tsx src/index.ts",
     "bootstrap": "npm run generate && npm run router:download",
-    "start": "concurrently \"npm run start:router\" \"npm run start:service\""
+    "start": "concurrently \"npm run start:router\" \"npm run start:service\"",
+    "test:grpc": "tsx test-grpc.ts"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "@connectrpc/connect-node": "^2.0.2",
     "concurrently": "^9.2.0"
   }
 }
