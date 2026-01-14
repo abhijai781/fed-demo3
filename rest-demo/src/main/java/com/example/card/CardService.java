@@ -24,5 +24,9 @@ public class CardService {
                 .filter(c -> Objects.equals(c.getUserId(), userId))
                 .collect(Collectors.toList());
     }
+    
+    public List<Card> getAllCards() {
+        return cards;
+    }
 
 }

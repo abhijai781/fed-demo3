@@ -2,7 +2,12 @@ type Query {
     getCards(userId: ID!): [Card]
 }
 
-type Card {
+type User @key(fields: "userId") @extends {
+    userId: ID! @external
+    service: [Card] @requires(fields: "userId")
+}
+
+type Card @key(fields: "cardId") {
   userId: ID!
   cardId: String
   cardExpiry: String

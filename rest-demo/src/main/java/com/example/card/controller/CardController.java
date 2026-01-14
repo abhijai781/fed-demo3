@@ -24,5 +24,11 @@ public class CardController {
     public List<Card> getCards(@PathVariable Long userId) {
         return cardService.getCards(userId);
     }
+    
+    
+    @GetMapping("")
+    public List<Card> getAllCards() {
+        return cardService.getAllCards();
+    }
 
 }

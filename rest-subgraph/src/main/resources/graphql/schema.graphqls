@@ -1,0 +1,17 @@
+type Card @key(fields: "cardId") {
+  cardId: String
+  cardExpiry: String
+  userId: ID
+}
+
+type Address @key(fields: "addressId") {
+  addressId: String
+  fullAddress: String
+  userId: ID
+}
+
+type User @key(fields: "userId") @extends {
+    userId: ID! @external
+    cards: [Card] @requires(fields: "userId")
+    addresses: [Address] @requires(fields: "userId")
+}

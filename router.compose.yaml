@@ -1,0 +1,18 @@
+version: 1
+subgraphs:
+  - name: users
+    routing_url: http://localhost:8081/graphql
+    schema:
+      file: ./users-subgraph/src/main/resources/graphql/schema.graphqls
+  - name: products
+    routing_url: http://localhost:8082/graphql
+    schema:
+      file: ./product-subgraph/src/main/resources/graphql/schema.graphqls
+  - name: reviews
+    routing_url: http://localhost:8083/graphql
+    schema:
+      file: ./reviews-subgraph/src/main/resources/graphql/schema.graphqls
+  - name: restservice
+    routing_url: http://localhost:8085/graphql
+    schema:
+      file: ./rest-subgraph/src/main/resources/graphql/schema.graphqls
